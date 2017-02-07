@@ -65,6 +65,7 @@ System.out.println(IOUtils.toString(resourceAsStream, Charset.defaultCharset()))
 ```
 
 # Java System Properties
+```
 - JRE related system properties
 
 java.home    JRE home directory, e.g., “C:\Program Files\Java\jdk1.7.0_09\jre”.
@@ -91,3 +92,5 @@ user.dir    the user’s current working directory.
 os.name the OS’s name, e.g., “Windows 7”.
 os.version  the OS’s version, e.g., “6.1”.
 os.arch the OS’s architecture, e.g., “x86”.
+
+```
