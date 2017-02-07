@@ -63,3 +63,31 @@ lt.close();
 final InputStream resourceAsStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("config.properties");
 System.out.println(IOUtils.toString(resourceAsStream, Charset.defaultCharset()));
 ```
+
+# Java System Properties
+- JRE related system properties
+
+java.home    JRE home directory, e.g., “C:\Program Files\Java\jdk1.7.0_09\jre”.
+java.library.path   JRE library search path for search native libraries. It is usually but not necessarily taken from the environment variable PATH.
+java.class.path JRE CLASSPATH, e.g., . (for current working directory).
+java.ext.dirs   JRE extension library path(s), e.g, “C:\Program Files\Java\jdk1.7.0_09\jre\lib\ext;C:\Windows\Sun\Java\lib\ext”.
+java.version    JRE version, e.g., 1.7.0_09.
+java.runtime.version    JRE version, e.g. 1.7.0_09-b05.
+
+- File related system properties
+
+file.separator  symbol for file directory separator such as d:\test\test.java. The default is \ for windows or / for Unix/Mac.
+path.separator  symbol for separating path entries, e.g., in PATH or CLASSPATH. The default is ; for windows or : for Unix/Mac.
+line.separator  symbol for end-of-line (or new line). The default is “\r\n” for windows or “\n” for Unix/Mac OS X.
+
+- User related system properties
+
+user.name   the user’s name.
+user.home   the user’s home directory.
+user.dir    the user’s current working directory.
+
+- OS related system properties
+
+os.name the OS’s name, e.g., “Windows 7”.
+os.version  the OS’s version, e.g., “6.1”.
+os.arch the OS’s architecture, e.g., “x86”.
