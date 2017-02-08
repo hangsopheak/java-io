@@ -1,0 +1,5 @@
+id;name;score;subject
+1;sophea;70;OOP
+2;Meng kong;60;UX
+3;Dara;90;OOP
+4;Theara;90;AI

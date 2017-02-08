@@ -1,0 +1,67 @@
+Compiled from master branch on Tue Jan 31 21:42:27 ICT 2017 by user sophea on sophea-ThinkPad-Edge-E440 host.
+Last git commits in the branch:
+
+commit b18f8f128f3955e8f3f14b003873e14e690f05ed
+Author: Sophea Mak <smak@dminc.com>
+Date:   Tue Jan 31 16:49:52 2017 +0700
+
+    update site text collape last section home page
+
+commit 8012b2509e2cbb51a9a7b334561a4746f210715a
+Author: Sophea Mak <smak@dminc.com>
+Date:   Tue Jan 31 15:34:35 2017 +0700
+
+    HDP-2560 Backend - Missing 'lastTimeAction' when using this API profile/v3/user
+
+commit 1fda85e75d729dca0df211c543d82a669834f72a
+Author: JBackend <jbackend@goldengekko.com>
+Date:   Tue Jan 31 12:57:44 2017 +0800
+
+    [Gradle Release Plugin] - new version commit:  '1.1.0.111-SNAPSHOT'.
+
+commit 90aa8f7dc7b97f40d8f45e8d907de4994c9ef811
+Author: JBackend <jbackend@goldengekko.com>
+Date:   Tue Jan 31 12:57:38 2017 +0800
+
+    [Gradle Release Plugin] - pre tag commit:  '1.1.0.110'.
+
+commit 02d47463f6e5dc138ffbc9e886f0e485642ce1af
+Merge: 7177a45 e8e28ce
+Author: Sophea Mak <smak@dminc.com>
+Date:   Tue Jan 31 09:58:53 2017 +0700
+
+    Merge branch 'hotfix_website_HDP_2520'
+    
+    Change-Id: Ie425fad38c8cf7ea986eeeeb5f25f8710065dfe4
+
+commit e8e28ce515012a05d6aff7d33f418422ed167046
+Author: Sophea Mak <smak@dminc.com>
+Date:   Tue Jan 31 09:56:08 2017 +0700
+
+    HDP-2556 Add new section in website home page
+
+commit 9815bccefbd5a308b0e41fba6f8e8f5ddb276eab
+Author: Sophea Mak <smak@dminc.com>
+Date:   Mon Jan 30 19:55:37 2017 +0700
+
+    HDP-2520 website change text part2
+
+commit e72872e8b3699c2fead99300fb3d1c4b4cc0957e
+Author: Sophea Mak <smak@dminc.com>
+Date:   Mon Jan 30 14:30:40 2017 +0700
+
+    HDP-2520 website change text
+
+commit 7177a457c72c29f7122d84eff01b4d3daf991f65
+Author: Sophea Mak <smak@dminc.com>
+Date:   Mon Jan 30 13:14:06 2017 +0700
+
+    SYSTEM: cleanup source code not use
+
+commit c942ae7d39785db06430d10a4f98d21e8e5778af
+Author: Sophea Mak <smak@dminc.com>
+Date:   Mon Jan 30 10:18:59 2017 +0700
+
+     HDP-2516 update source code and make value as constant
+
+

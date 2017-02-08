@@ -1,0 +1,272 @@
+maven dependency :
+
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.6.3</version>
+</dependency>
+
+mvn eclipse:clipse  // adding classpath
+
+
+Creating Java POJO Class :
+================================================
+
+package com.tuturself.programs;
+
+public class Employee {
+    
+    private String firstName;
+    private String lastName;
+    private int age;
+    private String address;
+    
+    public Employee(){
+        
+    }
+    
+    public Employee(String firstName, String lastName, int age, String address){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.address = address;
+    }
+    
+    /**
+     * @return the firstName
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+    /**
+     * @param firstName the firstName to set
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    /**
+     * @return the lastName
+     */
+    public String getLastName() {
+        return lastName;
+    }
+    /**
+     * @param lastName the lastName to set
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    /**
+     * @return the age
+     */
+    public int getAge() {
+        return age;
+    }
+    /**
+     * @param age the age to set
+     */
+    public void setAge(int age) {
+        this.age = age;
+    }
+    /**
+     * @return the address
+     */
+    public String getAddress() {
+        return address;
+    }
+    /**
+     * @param address the address to set
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "Employee [firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + ", address=" + address
+                + "]";
+    }
+} 
+
+========================================================
+Converting Java Object to JSON :
+
+package com.tuturself.programs;
+
+import java.io.File;
+import java.io.IOException;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class JavaObjectToJson {
+    
+  private static ObjectMapper mapper = new ObjectMapper();
+
+  public static void main(String [] args){
+    Employee employee = new Employee("Randy", "Ortan", 35, "Bay Area");
+    try {
+    // Convert object to JSON string and pretty print
+    String employeeAsPrettyString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(employee);
+    System.out.println("Pretty Printing JSON");
+    System.out.println(employeeAsPrettyString);
+        
+    // Convert Object To JSON and Saving to file
+    System.out.println("\nCreating File");
+    mapper.writeValue(new File("D:\\employee.json"), employee);
+    System.out.println("\nFile Created in the Directory");
+        
+    // Convert object to JSON string
+    String employeeAsString = mapper.writeValueAsString(employee);
+    System.out.println("\nPrinting JSON as String");
+    System.out.println(employeeAsString);
+
+        
+    // no need to catch JsonProcessingException since JsonProcessingException extends IOException
+    } catch (IOException e) {
+    e.printStackTrace();
+    }
+  }
+}
+==================================================================
+Here is the Output : 
+
+Pretty Printing JSON
+{
+  "firstName" : "Randy",
+  "lastName" : "Ortan",
+  "age" : 35,
+  "address" : "Bay Area"
+}
+
+Creating File
+
+File Created in the Directory
+
+Printing JSON as String
+{"firstName":"Randy","lastName":"Ortan","age":35,"address":"Bay Area"}
+==============================================================================
+
+Converting JSON to Java Object :
+======================================================
+
+package com.tuturself.programs; 
+
+import java.io.File; 
+import java.io.IOException; 
+import com.fasterxml.jackson.databind.ObjectMapper; 
+
+public class JsonToJavaObject { 
+  private static ObjectMapper mapper = new ObjectMapper(); 
+  
+  public static void main(String [] args){ 
+    try { 
+      //Converting JSON string from file to Object 
+      Employee employee = mapper.readValue(new File("D:\\employee.json"), Employee.class); 
+      System.out.println(employee); 
+      //Converting JSON string to Object 
+      String jsonString = "{\"firstName\":\"Kurt\",\"lastName\":\"Angle\",\"age\":38,\"address\":\"Las Vegas\"}"; 
+      Employee employee2 = mapper.readValue(jsonString, Employee.class); 
+      System.out.println(employee2); 
+    } catch (IOException e) { 
+      e.printStackTrace(); 
+    } 
+  } 
+}
+=================================
+Here is the Output : 
+
+Employee [firstName=Randy, lastName=Ortan, age=35, address=Bay Area]
+
+Employee [firstName=Kurt, lastName=Angle, age=38, address=Las Vegas]
+
+public class JavaListToJsonArray { 
+  private static ObjectMapper mapper = new ObjectMapper(); 
+
+  public static void main(String [] args){ 
+    Employee employee1 = new Employee("Randy", "Ortan", 35, "Bay Area"); 
+    Employee employee2 = new Employee("Kurt", "Angle", 38, "Las Vegas"); 
+    try { 
+      List employees = new ArrayList(); 
+      employees.add(employee1); 
+      employees.add(employee2); 
+      System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(employees)); 
+    } catch (IOException e) { 
+      e.printStackTrace(); 
+    } 
+  } 
+}
+
+OUTPUT:
+
+[ {
+  "firstName" : "Randy",
+  "lastName" : "Ortan",
+  "age" : 35,
+  "address" : "Bay Area"
+}, {
+  "firstName" : "Kurt",
+  "lastName" : "Angle",
+  "age" : 38,
+  "address" : "Las Vegas"
+} ]
+Converting JSON Array To Java List Object : 
+
+package com.tuturself.programs; 
+
+import java.io.IOException; 
+import java.util.List; 
+import com.fasterxml.jackson.core.type.TypeReference; 
+import com.fasterxml.jackson.databind.ObjectMapper; 
+
+public class JavaListToJsonArray { 
+
+  private static ObjectMapper mapper = new ObjectMapper(); 
+
+  public static void main(String [] args){ 
+    try { 
+      String jsonStringArray="[{\"firstName\":\"Randy\",\"lastName\":\"Ortan\",
+       \"age\":35,\"address\":\"Bay Area\"},{\"firstName\":\"Kurt\", 
+       \"lastName\":\"Angle\",\"age\":38,\"address\":\"Las Vegas\"}]\r\n"; 
+
+      List employees = mapper.readValue(jsonStringArray, new TypeReference>(){}); 
+      System.out.println(employees); 
+    } catch (IOException e) { 
+      e.printStackTrace(); 
+    } 
+  } 
+}
+OUTPUT:
+
+[Employee [firstName=Randy, lastName=Ortan, age=35, address=Bay Area], 
+ Employee [firstName=Kurt, lastName=Angle, age=38, address=Las Vegas]]
+
+===============read json into java object=========
+employees.json
+===========
+[{"firstName":"Sophea","lastName":"Mak","age":35,"address":"Phone Penh"},{"firstName":"Kurt","lastName":"Angle","age":38,"address":"Las Vegas"}]
+============
+
+
+public class JsonFileToJavaObject {
+    private static ObjectMapper mapper = new ObjectMapper();
+
+    public static void main(String[] args) {
+        try {
+            String jsonStringArray = IOUtils.toString(new FileInputStream("employees.json"), StandardCharsets.UTF_8);
+            // System.out.println(jsonStringArray);
+            final List<Employee> employees = Arrays.asList(mapper.readValue(jsonStringArray, Employee[].class));
+
+            System.out.println(employees);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+===============
+OUTPUT :
+[Employee [firstName=Sophea, lastName=Mak, age=35, address=Phone Penh], Employee [firstName=Kurt, lastName=Angle, age=38, address=Las Vegas]]
